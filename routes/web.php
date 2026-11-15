@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Livewire\Books\BookIndex;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,12 @@ Route::view('/profile', 'pages.placeholder', ['title' => 'Profile'])
 Route::view('/members', 'pages.placeholder', ['title' => 'Members'])
     ->name('members');
 
-Route::view('/borrowing', 'pages.placeholder', ['title' => 'Borrowing'])
+// Arahkan menu Borrowing langsung ke komponen loan-manager
+Route::livewire('/borrowing', 'loan-manager')
     ->name('borrowing');
+
+// Opsional: arahkan /peminjaman ke halaman yang sama
+Route::redirect('/peminjaman', '/borrowing')->name('loans.index');
 
 Route::view('/returns', 'pages.placeholder', ['title' => 'Returns'])    
     ->name('returns');

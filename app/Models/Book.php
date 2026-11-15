@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,7 +19,7 @@ class Book extends Model
         return $this->hasMany(Loan::class);
     }
 
-    public function scopeSearch($query, $keyword)
+    public function scopeSearch(Builder $query, ?string $keyword)
     {
         if (!$keyword) {
             return $query;
